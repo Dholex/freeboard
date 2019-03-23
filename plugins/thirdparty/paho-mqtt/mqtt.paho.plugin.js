@@ -9,7 +9,7 @@
         "display_name": "Paho MQTT Simple Client",
         "description": "Receive data from an MQTT server using Websockets",
         "external_scripts": [
-            "plugins/thirdparty/mqttws31.js"
+            "plugins/thirdparty/paho-mqtt/mqttws31.js"
         ],
         "settings": [
             {

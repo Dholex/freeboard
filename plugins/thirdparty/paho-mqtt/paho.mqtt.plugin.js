@@ -6,10 +6,10 @@
 	// -------------------
 	freeboard.loadDatasourcePlugin({
 		"type_name": "paho_mqtt",
-		"display_name": "Paho MQTT Detailed Client",
+		"display_name": "Paho MQTT Full Client",
 		"description": "Receive data from an MQTT server.",
 		"external_scripts": [
-			"plugins/thirdparty/mqttws31.js"
+			"plugins/thirdparty/paho-mqtt/mqttws31.js"
 		],
 		"settings": [
 			{
