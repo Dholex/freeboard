@@ -3,7 +3,7 @@
 // Special thanks to Al Stockdill-Mander, IBM for original implementation: https://github.com/alsm/freeboard-mqtt/
 // Fork by Benjamin Chodroff benjamin.chodroff@clearobject.com
 
-(function() {
+(function () {
   // ### Datasource Definition
   // -------------------
   freeboard.loadDatasourcePlugin({
@@ -14,73 +14,73 @@
       "plugins/thirdparty/mqtt/mqttws31-min.js"
     ],
     "settings": [{
-        "name": "topic",
-        "display_name": "Topic",
-        "type": "text",
-        "description": "For IBM quickstart, replace only DEVICEID with the device id string found in the upper right corner. For Watson IoT platform, replace DEVICEID with your specific device mac address or with '+' to listen to all devices in your organization. For all other MQTT servers, enter your own topic search string.",
-        "required": true,
-        "default_value": "iot-2/type/+/id/DEVICEID/evt/+/fmt/json"
-      },
-      {
-        "name": "server",
-        "display_name": "Server",
-        "type": "text",
-        "description": "For IBM quickstart use 'quickstart.internetofthings.ibmcloud.com', or type '[OrganizationID].messaging.internetofthings.ibmcloud.com' for Watson IoT, or enter any other MQTT server available",
-        "required": true,
-        "default_value": "quickstart.messaging.internetofthings.ibmcloud.com"
-      },
-      {
-        "name": "port",
-        "display_name": "Port",
-        "type": "number",
-        "description": "Typically either 8883 or 443 for secure, or 1883 for insecure communication",
-        "required": true,
-        "default_value": 8883
-      },
-      {
-        "name": "use_encryption",
-        "display_name": "Use Encryption",
-        "type": "boolean",
-        "description": "Use TLS encryption to connect to the MQTT Server securely (freeboard.io requires all brokers to use encryption)",
-        "default_value": true
-      },
-      {
-        "name": "client_id",
-        "display_name": "Client Id",
-        "type": "text",
-        "default_value": "quickstart",
-        "required": true,
-        "description": "For IBM quickstart, use default 'quickstart'. For Watson IoT, enter your Organization ID. For all other MQTT servers, set a clientID which will be passed as 'a:clientID:ApiKey:Timestamp'"
-      },
-      {
-        "name": "api_key",
-        "display_name": "API Key/Username",
-        "description": "Not required for IBM quickstart, required for Watson IoT Platform connections",
-        "type": "text",
-        "required": false,
-        "default_value": ""
-      },
-      {
-        "name": "api_auth_token",
-        "display_name": "API Auth Token/Password",
-        "description": "Not required for IBM quickstart, required for Watson IoT Platform connections",
-        "type": "text",
-        "required": false,
-        "default_value": ""
-      },
-      {
-        "name": "json_data",
-        "display_name": "JSON messages?",
-        "type": "boolean",
-        "description": "If the messages on your topic are in JSON format they will be parsed so the individual fields can be used in freeboard widgets",
-        "default_value": true
-      }
+      "name": "topic",
+      "display_name": "Topic",
+      "type": "text",
+      "description": "For IBM quickstart, replace only DEVICEID with the device id string found in the upper right corner. For Watson IoT platform, replace DEVICEID with your specific device mac address or with '+' to listen to all devices in your organization. For all other MQTT servers, enter your own topic search string.",
+      "required": true,
+      "default_value": "iot-2/type/+/id/DEVICEID/evt/+/fmt/json"
+    },
+    {
+      "name": "server",
+      "display_name": "Server",
+      "type": "text",
+      "description": "For IBM quickstart use 'quickstart.internetofthings.ibmcloud.com', or type '[OrganizationID].messaging.internetofthings.ibmcloud.com' for Watson IoT, or enter any other MQTT server available",
+      "required": true,
+      "default_value": "quickstart.messaging.internetofthings.ibmcloud.com"
+    },
+    {
+      "name": "port",
+      "display_name": "Port",
+      "type": "number",
+      "description": "Typically either 8883 or 443 for secure, or 1883 for insecure communication",
+      "required": true,
+      "default_value": 8883
+    },
+    {
+      "name": "use_encryption",
+      "display_name": "Use Encryption",
+      "type": "boolean",
+      "description": "Use TLS encryption to connect to the MQTT Server securely (freeboard.io requires all brokers to use encryption)",
+      "default_value": true
+    },
+    {
+      "name": "client_id",
+      "display_name": "Client Id",
+      "type": "text",
+      "default_value": "quickstart",
+      "required": true,
+      "description": "For IBM quickstart, use default 'quickstart'. For Watson IoT, enter your Organization ID. For all other MQTT servers, set a clientID which will be passed as 'a:clientID:ApiKey:Timestamp'"
+    },
+    {
+      "name": "api_key",
+      "display_name": "API Key/Username",
+      "description": "Not required for IBM quickstart, required for Watson IoT Platform connections",
+      "type": "text",
+      "required": false,
+      "default_value": ""
+    },
+    {
+      "name": "api_auth_token",
+      "display_name": "API Auth Token/Password",
+      "description": "Not required for IBM quickstart, required for Watson IoT Platform connections",
+      "type": "text",
+      "required": false,
+      "default_value": ""
+    },
+    {
+      "name": "json_data",
+      "display_name": "JSON messages?",
+      "type": "boolean",
+      "description": "If the messages on your topic are in JSON format they will be parsed so the individual fields can be used in freeboard widgets",
+      "default_value": true
+    }
     ],
     // **newInstance(settings, newInstanceCallback, updateCallback)** (required) : A function that will be called when a new instance of this plugin is requested.
     // * **settings** : A javascript object with the initial settings set by the user. The names of the properties in the object will correspond to the setting names defined above.
     // * **newInstanceCallback** : A callback function that you'll call when the new instance of the plugin is ready. This function expects a single argument, which is the new instance of your plugin object.
     // * **updateCallback** : A callback function that you'll call if and when your datasource has an update for freeboard to recalculate. This function expects a single parameter which is a javascript object with the new, updated data. You should hold on to this reference and call it when needed.
-    newInstance: function(settings, newInstanceCallback, updateCallback) {
+    newInstance: function (settings, newInstanceCallback, updateCallback) {
       newInstanceCallback(new mqttDatasourcePlugin(settings, updateCallback));
     }
   });
@@ -89,7 +89,7 @@
   // ### Datasource Implementation
   //
   // -------------------
-  var mqttDatasourcePlugin = function(settings, updateCallback) {
+  var mqttDatasourcePlugin = function (settings, updateCallback) {
     var self = this;
     var data = {};
 
@@ -112,7 +112,7 @@
         useSSL: currentSettings.use_encryption,
         timeout: 10,
         cleanSession: true,
-        onFailure: function(message) {
+        onFailure: function (message) {
           console.log("Connection failed: " + message.errorMessage);
         }
       });
@@ -131,7 +131,7 @@
     };
 
     // **onSettingsChanged(newSettings)** (required) : A public function we must implement that will be called when a user makes a change to the settings.
-    self.onSettingsChanged = function(newSettings) {
+    self.onSettingsChanged = function (newSettings) {
       try {
         client.disconnect();
       } catch (err) {
@@ -148,14 +148,14 @@
         useSSL: currentSettings.use_encryption,
         timeout: 10,
         cleanSession: true,
-        onFailure: function(message) {
+        onFailure: function (message) {
           console.log("Connection failed: " + message.errorMessage);
         }
       });
     }
 
     // **updateNow()** (required) : A public function we must implement that will be called when the user wants to manually refresh the datasource
-    self.updateNow = function() {
+    self.updateNow = function () {
       console.log("Forcing Update");
       try {
         client.disconnect();
@@ -170,14 +170,14 @@
         useSSL: currentSettings.use_encryption,
         timeout: 10,
         cleanSession: true,
-        onFailure: function(message) {
+        onFailure: function (message) {
           console.log("Connection failed: " + message.errorMessage);
         }
       });
     }
 
     // **onDispose()** (required) : A public function we must implement that will be called when this instance of this plugin is no longer needed. Do anything you need to cleanup after yourself here.
-    self.onDispose = function() {
+    self.onDispose = function () {
       if (client.isConnected()) {
         client.disconnect();
       }
@@ -195,7 +195,7 @@
       useSSL: currentSettings.use_encryption,
       timeout: 10,
       cleanSession: true,
-      onFailure: function(message) {
+      onFailure: function (message) {
         console.log("Connection failed: " + message.errorMessage);
       }
     });

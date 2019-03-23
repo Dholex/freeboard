@@ -12,7 +12,10 @@
     <script type="text/javascript">
         head.js("js/freeboard_plugins.min.js",
                 // *** Load more plugins here ***
-                "plugins/thirdparty/mqtt/mqtt.paho.plugin.js",
+                "plugins/thirdparty/paho-mqtt/mqtt.paho.plugin.js",
+                "plugins/thirdparty/paho-mqtt/paho.mqtt.plugin.js",
+                "plugins/thirdparty/aws-iot-ws-mqtt/index.js",
+
                 function(){
                     $(function()
                     { //DOM Ready
