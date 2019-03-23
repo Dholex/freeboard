@@ -10,7 +10,7 @@
         "display_name": "Paho MQTT Client",
         "description" : "Receive data from an MQTT server using Websockets",
         "external_scripts" : [
-            "plugins/thirdparty/mqtt/mqttws31-min.js"
+            "plugins/thirdparty/mqtt/mqttws31.js"
         ],
         "settings"    : [
             {
@@ -81,8 +81,7 @@
         };
 
         function onMessageArrived(message) {
-            // console.log( "! t: " + message.destinationName )
-            // console.log( "  m: " + message.payloadString )
+            console.log( "  m: " + message.payloadString )
             // Try to parse as JSON message, if failed revert to plain text
             try {
                 data[message.destinationName] = JSON.parse( message.payloadString )
